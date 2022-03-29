@@ -30,24 +30,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snack6</title>
+  <link rel="stylesheet" href="app.css">
 </head>
 <body>
   <?php
-  for ($i = 0; $i<count($db['teachers']); $i++){
-    ?>
-    <div style='background-color: red;'><?php echo $db['teachers'][$i]['name'];?> -
-    <?php echo $db['teachers'][$i]['lastname'];?></div>
-    <?php
-  }
-  ?>  
-  <hr>
-  <?php
-  for ($i = 0; $i<count($db['pm']); $i++){
-    ?>
-    <div style='background-color: lightgray;'><?php echo $db['pm'][$i]['name'];?> -
-    <?php echo $db['pm'][$i]['lastname'];?></div>
-    <?php
-  }
-  ?>  
-</body>
+    foreach ($db as $key => $value ){
+      ?>
+      <?php
+      for ($i = 0; $i < count($db[$key]); $i++){
+      ?>
+      <div class='<?php echo ($key == 'teachers'? 'red' : 'gray') ?>'>
+        <?php echo $db[$key][$i]['name'] ?>
+        <?php echo $db[$key][$i]['lastname'] ?>
+      </div>
+      <?php
+      }
+      ?>
+      <hr>
+      <?php
+    };
+    ?>  
+  </body>
 </html>
